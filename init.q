@@ -1,12 +1,12 @@
 /
-t.q: minimal test framework for Q
+init.q: minimal test framework for Q
 Provides assertion primitives and a test runner.
 
 Usage:
-  \l test/t.q
   test_foo:{.t.eq[1+1;2;"basic math"]}
   test_bar:{.t.near[sqrt 2;1.414;0.001;"sqrt approx"]}
-  .t.run[]  / runs all test_* functions
+  qt:use`cutie
+  qt.run[]  / runs all test_* functions
 \
 
 /

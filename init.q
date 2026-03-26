@@ -9,6 +9,12 @@ Usage:
   qt.run[]  / runs all test_* functions
 \
 
+/ ANSI color helpers (ESC = char 27)
+esc_:enlist "c"$27;
+green_:esc_,"[32m";
+red_:esc_,"[31m";
+reset_:esc_,"[0m";
+
 /
 Assertion primitives - signal on failure
 \
@@ -87,8 +93,8 @@ run:{[ts]
 
   {[r]
     $[r 1;
-      -1"[PASS] ",string r 0;
-      -1"[FAIL] ",string r 0]
+      -1(green_,"[PASS] "),reset_,string[r 0];
+      -1(red_,"[FAIL] "),reset_,string[r 0]]
   } each res;
 
   passed:sum res[;1];
